@@ -54,17 +54,17 @@ bool GameMenu::init()
     // add a label shows "Hello World"
     // create and initialize a label
     
-    auto label = LabelTTF::create("AppContest 2014 - PhuND", "Arial", 24);
+    auto label = LabelTTF::create("Do it by two hands", "Arial", 40);
     
     // position the label on the center of the screen
     label->setPosition(Point(origin.x + visibleSize.width/2,
-                            origin.y + visibleSize.height - label->getContentSize().height));
+                            origin.y + 3*visibleSize.height/4));
 
     // add the label as a child to this layer
     this->addChild(label, 1);
 
-    // add "HelloWorld" splash screen"
-    auto sprite = Sprite::create("HelloWorld.png");
+    // add background splash screen"
+    auto sprite = Sprite::create("background.png");
 
     // position the sprite on the center of the screen
     sprite->setPosition(Point(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));
@@ -72,6 +72,14 @@ bool GameMenu::init()
     // add the sprite as a child to this layer
     this->addChild(sprite, 0);
     
+    //Add [play game] button
+    auto playLabel = LabelTTF::create("Play game", "Arial", 50);
+    auto playItem = MenuItemLabel::create(playLabel, CC_CALLBACK_1(GameMenu::playGameCallback, this));
+    playItem->setPosition(Point(origin.x + visibleSize.width/2, origin.y + visibleSize.height/2));
+    auto playMenu = Menu::create(playItem, NULL);
+    playMenu->setPosition(Point::ZERO);
+    this->addChild(playMenu, 1);
+
     return true;
 }
 
@@ -89,3 +97,9 @@ void GameMenu::menuCloseCallback(Ref* pSender)
     exit(0);
 #endif
 }
+
+void GameMenu::playGameCallback(Ref* pSender)
+{
+
+}
+
