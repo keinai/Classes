@@ -101,7 +101,7 @@ void GameMenu::menuCloseCallback(Ref* pSender)
 
 void GameMenu::playGameCallback(Ref* pSender)
 {
-	auto playScene = PlayScene::create();
+	auto playScene = PlayScene::createScene();
 	auto director = Director::getInstance();
 	director->replaceScene(playScene);
 }

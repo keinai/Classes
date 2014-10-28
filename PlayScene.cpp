@@ -22,7 +22,7 @@ bool PlayScene::init()
 {
     //////////////////////////////
     // 1. super init first
-    if ( !Scene::init() )
+    if ( !Layer::init() )
     {
         return false;
     }
@@ -39,6 +39,7 @@ bool PlayScene::init()
 
     // add the sprite as a child to this layer
     this->addChild(sprite, 0);
+
 
     return true;
 }
