@@ -1,4 +1,5 @@
 #include "GameMenu.h"
+#include "PlayScene.h"
 
 USING_NS_CC;
 
@@ -100,6 +101,8 @@ void GameMenu::menuCloseCallback(Ref* pSender)
 
 void GameMenu::playGameCallback(Ref* pSender)
 {
-
+	auto playScene = PlayScene::create();
+	auto director = Director::getInstance();
+	director->replaceScene(playScene);
 }
 
