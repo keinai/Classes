@@ -93,7 +93,7 @@ void GameMenu::menuCloseCallback(Ref* pSender)
 #endif
 
     Director::getInstance()->end();
-daffasgdf
+
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
     exit(0);
 #endif
