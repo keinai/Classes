@@ -40,9 +40,35 @@ bool PlayScene::init()
     // add the sprite as a child to this layer
     this->addChild(sprite, 0);
 
+    //Add line
+    Sprite *sprite2 = Sprite::create("line.png");
+
+    sprite2->setPosition(Point(origin.x + visibleSize.width/2 , origin.y + visibleSize.height));
+    sprite2->setScaleX(0.5);
+    sprite2->setScaleY(10);
+
+    this->addChild(sprite2, 0);
+
+    //Them chuong ngai vat
+    Sprite *chuongNgaiVat = Sprite::create("chuongNgaiVat.png");
+
+    chuongNgaiVat->setPosition(Point(origin.x + visibleSize.width/4, origin.y + visibleSize.height+40));
+    MoveBy *diXuong = MoveTo::create(2, Point(origin.x + visibleSize.width/4, origin.y));
+    CCFiniteTimeAction *diXuongXong = CCCallFuncN::create(this,
+        		callfuncN_selector(PlayScene::chuongNgaiVatBienMat));
+    chuongNgaiVat->runAction(CCSequence::create(diXuong, diXuongXong, NULL));
+
+
+
+
+    this->addChild(chuongNgaiVat,0);
+
 
     return true;
 }
 
-
+void PlayScene::chuongNgaiVatBienMat(CCNode *sender){
+	CCSprite *sprite = (CCSprite *)sender;
+	this->removeChild(sprite, true);
+}
 
