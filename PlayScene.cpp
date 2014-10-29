@@ -52,14 +52,23 @@ bool PlayScene::init()
     //Them chuong ngai vat
     Sprite *chuongNgaiVat = Sprite::create("chuongNgaiVat.png");
 
-    chuongNgaiVat->setPosition(Point(origin.x + visibleSize.width/4, origin.y + visibleSize.height+40));
-    MoveBy *diXuong = MoveTo::create(2, Point(origin.x + visibleSize.width/4, origin.y));
+    auto doRongBanDau = chuongNgaiVat->getTextureRect().size.width;
+    CCLOG("Ban dau: %f",doRongBanDau);
+    chuongNgaiVat->setScaleX(0.25*visibleSize.width/ doRongBanDau);
+    auto doRong = 0.25*visibleSize.width;
+    CCLOG("Sau do: %f", doRong);
+    chuongNgaiVat->setPosition(Point(origin.x + doRong/2 , origin.y + visibleSize.height+40));
+    MoveBy *diXuong = MoveTo::create(2, Point(origin.x + doRong/2 , origin.y));
+
     CCFiniteTimeAction *diXuongXong = CCCallFuncN::create(this,
         		callfuncN_selector(PlayScene::chuongNgaiVatBienMat));
     chuongNgaiVat->runAction(CCSequence::create(diXuong, diXuongXong, NULL));
 
 
-
+    //Them DoChoiBenTrai
+    Sprite *doChoiBenTrai = Sprite::create("doChoiBenTrai.png");
+    doChoiBenTrai->setPosition(Point(origin.x + visibleSize.width/4, origin.y + visibleSize.height/4));
+    this->addChild(doChoiBenTrai,0);
 
     this->addChild(chuongNgaiVat,0);
 
