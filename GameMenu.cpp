@@ -30,6 +30,7 @@ bool GameMenu::init()
     
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Point origin = Director::getInstance()->getVisibleOrigin();
+    ViTri viTri = ViTri::getInstance();
 
     /////////////////////////////
     // 2. add a menu item with "X" image, which is clicked to quit the program
